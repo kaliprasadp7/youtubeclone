@@ -1,10 +1,23 @@
+import React,{useState} from "react";
+import Feed from "./components/Feed";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 
 function App() {
+  const apikey = process.env.REACT_APP_YOUTUBE_API_KEY;
+  console.log(apikey)
+    
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   return (
-    <>
-    <h1 className="text-red-700 text-7xl">Hello World</h1>
-    <p className="text-blue-300">dsjhsdfh</p>
-    </>
+    <div className="relative">
+    <Navbar onMenuClick={toggleSidebar}/>
+    <Sidebar onMenuClick={toggleSidebar} isOpen={isSidebarOpen}/>
+    <Feed/>
+    </div>
   );
 }
 
