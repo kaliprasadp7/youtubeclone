@@ -43,7 +43,7 @@ function Feed({isOpen}) {
         hasMore={data.length < totalResults}
         loader={<h4>Loading...</h4>}
       >
-        <div className={`p-1 md:p-2 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 ${isOpen && 'lg:grid-cols-3 lg:pl-[12vw]'} `}>
+        <div className={`p-1 md:p-2 grid grid-cols-1 gap-4 md:grid-cols-2 ${isOpen && 'lg:grid-cols-3 lg:pl-[12vw]'} ${ !isOpen && 'lg:grid-cols-4'}  `}>
           {data.map((video) => {
             return <VideoCard key={video.id} data={video} />
           })}
