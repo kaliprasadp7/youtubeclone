@@ -24,7 +24,7 @@ function DataState(props) {
 
   const fetchVideos = async () => {
     try {
-      const response = await fetch(`${host}/videos?part=snippet,statistics&chart=mostPopular&maxResults=10&key=${apikey}`, {
+      const response = await fetch(`${host}/videos?part=snippet,statistics&chart=mostPopular&maxResults=14&key=${apikey}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

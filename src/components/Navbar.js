@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import logo from '../assets/logo.png';
 import profilepic from '../assets/profile.jpg'
 import { CiSearch } from "react-icons/ci";
@@ -7,19 +7,25 @@ import { IoMdMic } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
+
+import UserContext from '../context/UserContext';
 
 
 
 function Navbar({onMenuClick}) {  
+    const context = useContext(UserContext);
+    const { accessToken, handleLogin, handleLogout } = context;
+
     return (
         <div className='flex items-center justify-between space-x-2 p-1 md:p-2'>
             <div className='flex md:space-x-2 lg:p-2 lg:space-x-3'>
                 <div className="p-2 rounded-full active:bg-gray-200">
-                    <FiMenu className='text-sm md:text-lg lg:text-xl' onClick={onMenuClick} />
+                    <FiMenu className='text-sm md:text-lg lg:text-2xl' onClick={onMenuClick} />
                 </div>
 
                 <div className="flex items-center">
-                    <img src={logo} alt="logo" className="w-14 md:w-20 lg:w-28" />
+                    <img src={logo} alt="logo" className="w-14 md:w-20 lg:w-24" />
                     <sup className='text-[8px] md:text-[10px] lg:text-[12px]'>IN</sup>
                 </div>
             </div>
@@ -40,11 +46,16 @@ function Navbar({onMenuClick}) {
                 </div>
             </div>
 
-            <div className="flex items-center justify-between space-x-1 md:space-x-2 lg:space-x-3">
+            {accessToken ? <div className="flex items-center justify-between space-x-1 md:space-x-2 lg:space-x-3">
                 < RiVideoAddLine className='text-lg md:text-xl lg:text-2xl' />
                 < IoIosNotificationsOutline className='text-lg md:text-xl lg:text-2xl' />
-                <img src={profilepic} alt="profileicon" className='w-5 rounded-full md:w-6 lg:w-7' />
+                <img src={profilepic} alt="profileicon" className='w-5 rounded-full md:w-6 lg:w-7' onClick={handleLogout} />
+            </div> :
+            <div className="flex items-center gap-2 border rounded-full px-2 py-1" onClick={handleLogin}>
+                <CgProfile className='text-xl'/>
+                <span>Sign in</span>
             </div>
+            }
         </div>
     )
 }

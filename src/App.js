@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar";
 import YouTubeClone from "./components/YoutubeClone";
 import DataState from "./context/DataState";
 import VideoCard from "./components/VideoCard";
+import UserState from "./context/UserState";
 
 function App() {
   // const apikey = process.env.REACT_APP_YOUTUBE_API_KEY;
@@ -17,13 +18,15 @@ function App() {
 
   return (
     <div className="relative">
-      <DataState>
-        <Navbar onMenuClick={toggleSidebar} />
-        <Sidebar onMenuClick={toggleSidebar} isOpen={isSidebarOpen} />
-        <Feed />
-        <VideoCard/>
-        <YouTubeClone />
-      </DataState>
+      <UserState>
+        <DataState>
+          <Navbar onMenuClick={toggleSidebar} />
+          <Sidebar onMenuClick={toggleSidebar} isOpen={isSidebarOpen} />
+          <Feed isOpen={isSidebarOpen} />
+          <VideoCard />
+          {/* <YouTubeClone /> */}
+        </DataState>
+      </UserState>
     </div>
   );
 }
