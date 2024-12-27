@@ -9,19 +9,6 @@ function DataState(props) {
   const [pageToken, setPageToken] = useState("")
   const apikey = process.env.REACT_APP_YOUTUBE_API_KEY;
 
-  // const isubscribed = async () => {
-  //   //API call
-  //   const response = await fetch(`${host}/subscriptions?part=snippet&mine=true&key=${apikey}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'auth-token': localStorage.getItem('token')
-  //     }
-  //   })
-  //   const json = await response.json();
-  //   setNotes(json);
-  // }
-
   const fetchVideos = async () => {
     try {
       const response = await fetch(`${host}/videos?part=snippet,statistics&chart=mostPopular&maxResults=14&key=${apikey}`, {
