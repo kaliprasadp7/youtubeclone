@@ -64,21 +64,21 @@ function Sidebar({ onMenuClick, isOpen }) {
       </div>
       <div>
         {sidebarobj1.map((item, index) => (
-          <div key={index} className="p-2 rounded-md flex items-center space-x-2  hover:bg-[#f2f2f2] active:bg-[#f2f2f2]">
+          <div key={index} className="p-2 rounded-md cursor-pointer flex items-center space-x-2  hover:bg-[#f2f2f2] active:bg-[#f2f2f2]">
             <span className='text-lg md:text-xl lg:text-2xl'>{item.icon}</span>
             <span className='text-xs md:text-sm lg:text-base active:font-medium'>{item.title}</span>
           </div>
         ))}
       </div>
       <hr className='mt-2 mb-2' />
-      <div className="flex items-center space-x-1 mb-2 pl-2">
+      <div className="flex items-center space-x-1 mb-2 pl-2 cursor-pointer">
         <span className='font-bold'>You</span>
         <MdKeyboardArrowRight className='text-xl' />
       </div>
       {sidebarobj2.map((item, index) => (
-        <div key={index} className="p-2 rounded-md flex items-center space-x-5 hover:bg-[#f2f2f2] active:bg-[#f2f2f2]">
+        <div key={index} className="p-2 rounded-md flex items-center cursor-pointer space-x-3 md:space-x-4 lg:space-x-5 hover:bg-[#f2f2f2] active:bg-[#f2f2f2]">
           <span className='text-lg md:text-xl lg:text-2xl'>{item.icon}</span>
-          <span className=''>{item.title}</span>
+          <span className='text-xs md:text-sm lg:text-base active:font-medium'>{item.title}</span>
         </div>
       ))}
       <hr className='mt-2 mb-2' />
@@ -87,24 +87,24 @@ function Sidebar({ onMenuClick, isOpen }) {
 
         {/* Show first 8 subscriptions or all based on state */}
         {subscriptions.slice(0, showAllSubscriptions ? subscriptions.length : 8).map((item, index) => (
-          <div key={index} className="p-2 rounded-md flex items-center space-x-5 hover:bg-[#f2f2f2] active:bg-[#f2f2f2]">
-            <img src={item.snippet.thumbnails.default.url} alt="channelIcon" className='w-7 rounded-full' />
-            <span className='text-sm'>{(item.snippet.title).length > 14 ? (item.snippet.title).slice(0, 15) + "..." : (item.snippet.title)}</span>
+          <div key={index} className="p-2 rounded-md flex items-center space-x-3 md:space-x-4 lg:space-x-5 hover:bg-[#f2f2f2] active:bg-[#f2f2f2] cursor-pointer">
+            <img src={item.snippet.thumbnails.default.url} alt="channelIcon" className='w-5 md:w-6 lg:w-7 rounded-full' />
+            <span className='text-xs md:text-sm lg:text-base active:font-medium'>{(item.snippet.title).length > 14 ? (item.snippet.title).slice(0, 15) + "..." : (item.snippet.title)}</span>
           </div>
         ))}
 
         {/* Show/Hide Button */}
-        <div className="p-2 rounded-md flex items-center space-x-5 hover:bg-[#f2f2f2] active:bg-[#f2f2f2] cursor-pointer" onClick={toggleShowSubscriptions}>
-          {showAllSubscriptions ? <FaAngleUp /> : <FaAngleDown />}
-          <span className='text-sm'>{showAllSubscriptions ? "Show less" : "Show more"}</span>
+        <div className="p-2 rounded-md flex items-center space-x-3 md:space-x-4 lg:space-x-5 hover:bg-[#f2f2f2] active:bg-[#f2f2f2] cursor-pointer" onClick={toggleShowSubscriptions}>
+          <span className='p-1'>{showAllSubscriptions ? <FaAngleUp /> : <FaAngleDown />}</span>
+          <span className='text-xs md:text-sm'>{showAllSubscriptions ? "Show less" : "Show more"}</span>
         </div>
       </div> :
         // show when accessToken is not available means user not loggedIn
-        <div className='flex flex-col p-5 gap-5 items-start'>
-          <p className='text-sm'>Sign in to like videos, comment and subscribe.</p>
+        <div className='flex flex-col p-3 md:p-4 lg:p-5 gap-5 items-start'>
+          <p className='text-xs md:text-sm'>Sign in to like videos, comment and subscribe.</p>
           <div className="flex items-center gap-2 border rounded-full px-2 py-1" onClick={handleLogin}>
-            <CgProfile className='text-xl' />
-            <span>Sign in</span>
+            <CgProfile className='text-sm md:text-lg lg:text-xl' />
+            <span className='text-xs md:text-sm'>Sign in</span>
           </div>
         </div>
       }

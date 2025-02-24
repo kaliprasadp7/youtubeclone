@@ -3,7 +3,7 @@ import Feed from "./components/Feed";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import DataState from "./context/DataState";
-import VideoCard from "./components/VideoCard";
+// import VideoCard from "./components/VideoCard";
 import UserState from "./context/UserState";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
           <Navbar onMenuClick={toggleSidebar} />
           <Sidebar onMenuClick={toggleSidebar} isOpen={isSidebarOpen} />
           <Feed isOpen={isSidebarOpen} />
-          <VideoCard />
+          {/* <VideoCard /> */}
         </DataState>
       </UserState>
     </div>

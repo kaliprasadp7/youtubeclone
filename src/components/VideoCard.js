@@ -58,7 +58,7 @@ function VideoCard(props) {
     return (
         <div>
             <img src={data.snippet.thumbnails.medium.url} alt="videothumbnail" className='w-full rounded-xl' />
-            <div className='flex gap-2 mt-3'>
+            <div className='flex justify-between gap-2 mt-3'>
                 <div>
                     <img src={data.icon} alt="channelicon" className='w-10 rounded-full' />
                 </div>
